@@ -8,7 +8,7 @@ namespace moment4musicAPI.Models
         //properties
         public int AlbumId { get; set; }
 
-        public string? AlbumName { get; set; }
+        public string? Name { get; set; }
 
         public ICollection<Track>? Track { get; set; }
 

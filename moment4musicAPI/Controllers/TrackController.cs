@@ -25,13 +25,18 @@ namespace moment4musicAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Track>>> GetTracks()
         {
+
+            //lägger till en iclude för att få med album-modellen
+            var tracks = _context.Tracks.Include(t => t.Album);
+
             if (_context.Tracks == null)
           {
               return NotFound();
           }
 
-            return await _context.Tracks.ToListAsync();
+            return await tracks.ToListAsync();
         }
+
 
         // GET: api/Track/5
         [HttpGet("{id}")]

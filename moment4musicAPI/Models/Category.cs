@@ -9,7 +9,7 @@ namespace moment4musicAPI.Models
         //properties
         public int CategoryId { get; set; }
 
-        public string? CategoryName { get; set; }
+        public string? Name { get; set; }
 
         public ICollection<Track>? Track { get; set; }
 

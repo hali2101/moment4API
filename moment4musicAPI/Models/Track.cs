@@ -17,13 +17,13 @@ namespace moment4musicAPI.Models
 
             public int? TrackLength { get; set; }
 
-            [ForeignKey("Album")]
-            public int? AlbumId { get; set; }
-            public Album? Album { get; set; }
+        [ForeignKey("Album")]
+        public int? AlbumId { get; set; } = null;
+        public Album? Album { get; set; } = null;
 
-            [ForeignKey("Category")]
-            public int? CategoryId { get; set; }
-            public Category? Category { get; set; }
+        [ForeignKey("Category")]
+        public int? CategoryId { get; set; } = null;
+        public Category? Category { get; set; } = null;
 
         }
 
