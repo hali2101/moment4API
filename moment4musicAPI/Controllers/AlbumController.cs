@@ -25,10 +25,11 @@ namespace moment4musicAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-          if (_context.Albums == null)
-          {
-              return NotFound();
-          }
+
+            if (_context.Albums == null)
+            {
+                return NotFound();
+            }
             return await _context.Albums.ToListAsync();
         }
 

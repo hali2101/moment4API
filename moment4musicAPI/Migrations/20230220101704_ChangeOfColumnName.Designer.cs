@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using moment4musicAPI.Data;
 
@@ -11,9 +12,11 @@ using moment4musicAPI.Data;
 namespace moment4musicAPI.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    partial class MusicContextModelSnapshot : ModelSnapshot
+    [Migration("20230220101704_ChangeOfColumnName")]
+    partial class ChangeOfColumnName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,16 +92,26 @@ namespace moment4musicAPI.Migrations
             modelBuilder.Entity("moment4musicAPI.Models.Track", b =>
                 {
                     b.HasOne("moment4musicAPI.Models.Album", "Album")
-                        .WithMany()
+                        .WithMany("Track")
                         .HasForeignKey("AlbumId");
 
                     b.HasOne("moment4musicAPI.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Track")
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Album");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("moment4musicAPI.Models.Album", b =>
+                {
+                    b.Navigation("Track");
+                });
+
+            modelBuilder.Entity("moment4musicAPI.Models.Category", b =>
+                {
+                    b.Navigation("Track");
                 });
 #pragma warning restore 612, 618
         }

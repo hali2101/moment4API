@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace moment4musicAPI.Models
 {
 
@@ -9,9 +11,8 @@ namespace moment4musicAPI.Models
         //properties
         public int CategoryId { get; set; }
 
-        public string? Name { get; set; }
-
-        public ICollection<Track>? Track { get; set; }
+        [Required]
+        public string? CategoryName { get; set; }
 
     }
 }

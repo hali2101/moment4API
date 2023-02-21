@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace moment4musicAPI.Models
 {
     //skapar klass för tabellen track
@@ -8,10 +10,8 @@ namespace moment4musicAPI.Models
         //properties
         public int AlbumId { get; set; }
 
-        public string? Name { get; set; }
-
-        public ICollection<Track>? Track { get; set; }
-
+        [Required]
+        public string? AlbumName { get; set; }
     }
 }
 
